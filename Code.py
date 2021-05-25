@@ -108,10 +108,22 @@ def function1():
 
 #function to display all books in a specific month and year
 def function2():
-
-    month = input_integer("Select month:")
-    year = input_integer("Select year:")
-
+    # has to month between 1-12 otherwise imput occurs agaian
+    while True:
+        month = input_integer("Select month:")      
+        if month > 12 or month < 1:
+            print("Please enter a new valid month")
+            pass
+        else:
+            break
+    # has to be year between 1942-2013 because we dont have any data out of that range
+    while True:
+        year = input_integer("Select year:")     
+        if year > 2013 or year < 1942:
+            print("Please enter a new valid year")
+            pass
+        else:
+            break
     #create T/F string which indicates which books match the selected month and year
     index_month = bestsellers["Date"].dt.month == month
     index_year = bestsellers["Date"].dt.year == year
